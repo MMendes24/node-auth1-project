@@ -3,6 +3,7 @@ const db = require('../data/dbConfig')
 module.exports = {
     get,
     add,
+    getBy,
 }
 
 function get() {
@@ -11,5 +12,11 @@ function get() {
 
 function add(user) {
     return db('users')
-    .insert(user)
+        .insert(user)
+}
+
+function getBy(filter) {
+    return db("users")
+        .where(filter)
+        .orderBy("id");
 }
